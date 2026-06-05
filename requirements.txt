@@ -1,0 +1,19 @@
+# Core async
+aiohttp>=3.9.0
+asyncio>=3.4.3
+
+# Web framework (API server)
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Data & math
+numpy>=1.26.0
+
+# Utilities
+python-dotenv>=1.0.0
+zoneinfo; python_version < "3.9"
+
+# Development / testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
+httpx>=0.26.0   # for FastAPI test client

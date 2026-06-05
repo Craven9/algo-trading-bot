@@ -1,0 +1,131 @@
+{
+  "break_and_hold": {
+    "description": "Price breaks a key resistance level and holds above it on a retest",
+    "score_weights": {
+      "vwap_position": 15,
+      "key_level_behavior": 20,
+      "volume_confirmation": 15,
+      "market_structure": 10,
+      "rsi_momentum": 10,
+      "macd_signal": 8,
+      "fibonacci_proximity": 5,
+      "opening_range_status": 10,
+      "liquidity_sweep": 5,
+      "catalyst": 2
+    },
+    "entry": {
+      "require_retest": true,
+      "max_entry_above_breakout_pct": 2.0,
+      "min_hold_bars": 2
+    },
+    "exit": {
+      "stop_below_breakout_level": true,
+      "first_target_r": 1.5,
+      "runner_trail": "higher_low_5m"
+    }
+  },
+  "vwap_reclaim": {
+    "description": "Price reclaims VWAP from below with volume confirmation",
+    "score_weights": {
+      "vwap_position": 25,
+      "key_level_behavior": 15,
+      "volume_confirmation": 20,
+      "market_structure": 10,
+      "rsi_momentum": 8,
+      "macd_signal": 7,
+      "fibonacci_proximity": 5,
+      "opening_range_status": 5,
+      "liquidity_sweep": 3,
+      "catalyst": 2
+    },
+    "entry": {
+      "require_vwap_reclaim": true,
+      "max_entry_above_vwap_pct": 1.5,
+      "require_volume_surge": true
+    },
+    "exit": {
+      "stop_below_vwap": true,
+      "exit_on_vwap_loss": true,
+      "first_target_r": 1.5,
+      "runner_trail": "higher_low_5m"
+    }
+  },
+  "bottom_base": {
+    "description": "Price builds a base at support after a down move, coiling for a reversal",
+    "score_weights": {
+      "vwap_position": 10,
+      "key_level_behavior": 15,
+      "volume_confirmation": 15,
+      "market_structure": 15,
+      "rsi_momentum": 10,
+      "macd_signal": 10,
+      "fibonacci_proximity": 10,
+      "opening_range_status": 5,
+      "liquidity_sweep": 7,
+      "catalyst": 3
+    },
+    "entry": {
+      "require_base_bars": 3,
+      "max_base_range_pct": 3.0,
+      "require_volume_contraction": true
+    },
+    "exit": {
+      "stop_below_base": true,
+      "first_target_r": 2.0,
+      "runner_trail": "atr_based"
+    }
+  },
+  "fibonacci_pullback": {
+    "description": "Price pulls back to a key Fibonacci retracement after an impulsive move",
+    "score_weights": {
+      "vwap_position": 10,
+      "key_level_behavior": 10,
+      "volume_confirmation": 10,
+      "market_structure": 15,
+      "rsi_momentum": 10,
+      "macd_signal": 8,
+      "fibonacci_proximity": 25,
+      "opening_range_status": 5,
+      "liquidity_sweep": 5,
+      "catalyst": 2
+    },
+    "entry": {
+      "preferred_levels": [0.382, 0.5, 0.618],
+      "max_distance_from_level_pct": 2.0,
+      "require_bounce_confirmation": true
+    },
+    "exit": {
+      "stop_below_0786_level": true,
+      "targets": [1.0, 1.272, 1.618, 2.0, 2.618],
+      "first_target_r": 1.5,
+      "runner_trail": "fibonacci_levels"
+    }
+  },
+  "opening_range_breakout": {
+    "description": "Price breaks the opening range high with strong volume after the first 15 minutes",
+    "score_weights": {
+      "vwap_position": 10,
+      "key_level_behavior": 10,
+      "volume_confirmation": 20,
+      "market_structure": 10,
+      "rsi_momentum": 8,
+      "macd_signal": 5,
+      "fibonacci_proximity": 5,
+      "opening_range_status": 25,
+      "liquidity_sweep": 5,
+      "catalyst": 2
+    },
+    "entry": {
+      "require_orh_break": true,
+      "max_entry_above_orh_pct": 2.0,
+      "min_or_range_pct": 0.5,
+      "require_volume_on_break": true
+    },
+    "exit": {
+      "stop_at_orl": false,
+      "stop_below_orh": true,
+      "first_target_r": 1.5,
+      "runner_trail": "higher_low_5m"
+    }
+  }
+}

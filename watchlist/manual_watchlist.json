@@ -1,0 +1,6 @@
+{
+  "_comment": "Manual watchlist — tickers here are treated as hints, not automatic buys. They still pass through the full analysis pipeline.",
+  "tickers": [],
+  "last_updated": "2025-01-01",
+  "notes": "Add tickers you want the bot to always scan, regardless of scanner output."
+}

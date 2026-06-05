@@ -1,0 +1,146 @@
+{
+  "mode": {
+    "dry_run": true,
+    "paper_trading": true,
+    "live_trading": false
+  },
+  "scanner": {
+    "enabled": true,
+    "min_relative_volume": 2.0,
+    "min_price": 5.0,
+    "max_price": 500.0,
+    "max_float_millions": 50,
+    "scan_interval_seconds": 60,
+    "max_candidates_per_cycle": 20
+  },
+  "risk": {
+    "risk_per_trade_pct": 1.0,
+    "max_risk_per_trade_pct": 2.0,
+    "daily_loss_limit_pct": 3.0,
+    "max_open_positions": 4,
+    "max_portfolio_exposure_pct": 30.0,
+    "consecutive_loss_size_reduction": true,
+    "consecutive_loss_threshold": 2,
+    "consecutive_loss_size_multiplier": 0.5
+  },
+  "entry": {
+    "min_setup_score": 65,
+    "min_probability": 55,
+    "min_risk_reward": 2.0,
+    "preferred_risk_reward": 3.0,
+    "max_entry_distance_from_ideal_pct": 3.0,
+    "block_first_minutes": 15,
+    "block_lunch_window": false,
+    "lunch_window_start": "12:00",
+    "lunch_window_end": "13:00"
+  },
+  "exits": {
+    "breakeven_at_r": 1.0,
+    "first_partial_at_r": 1.5,
+    "first_partial_size_pct": 40,
+    "second_partial_at_r": 2.5,
+    "second_partial_size_pct": 25,
+    "volume_fade_exit_enabled": true,
+    "volume_fade_threshold_pct": 50,
+    "failed_breakout_exit_enabled": true,
+    "vwap_loss_exit_enabled": true,
+    "eod_exit_minutes_before_close": 15,
+    "max_trade_duration_hours": 3,
+    "time_based_reassess_hours": 2
+  },
+  "fibonacci": {
+    "enabled": true,
+    "use_for_entry_confirmation": true,
+    "use_for_targets": true,
+    "preferred_retracements": [0.382, 0.5, 0.618],
+    "preferred_extensions": [1.272, 1.618, 2.0, 2.618],
+    "max_distance_from_level_pct": 2.0,
+    "block_if_under_0618_after_failed_reclaim": true
+  },
+  "setups": {
+    "break_and_hold": {
+      "enabled": true,
+      "min_score": 68,
+      "description": "Price breaks a key level and holds above it on a retest"
+    },
+    "vwap_reclaim": {
+      "enabled": true,
+      "min_score": 65,
+      "description": "Price reclaims VWAP from below with volume confirmation"
+    },
+    "bottom_base": {
+      "enabled": true,
+      "min_score": 70,
+      "description": "Price builds a base at support after a down move"
+    },
+    "fibonacci_pullback": {
+      "enabled": true,
+      "min_score": 65,
+      "description": "Price pulls back to a key Fibonacci retracement level"
+    },
+    "opening_range_breakout": {
+      "enabled": true,
+      "min_score": 72,
+      "description": "Price breaks the opening range high with volume"
+    }
+  },
+  "indicators": {
+    "rsi_period": 14,
+    "macd_fast": 12,
+    "macd_slow": 26,
+    "macd_signal": 9,
+    "vwap_enabled": true,
+    "atr_period": 14,
+    "ma_fast": 9,
+    "ma_slow": 20,
+    "volume_ma_period": 20,
+    "opening_range_minutes": 15
+  },
+  "market_filter": {
+    "check_spy_trend": true,
+    "check_qqq_trend": true,
+    "check_vix": true,
+    "max_acceptable_vix": 35,
+    "pause_if_spy_below_vwap": true,
+    "spy_ticker": "SPY",
+    "qqq_ticker": "QQQ",
+    "vix_ticker": "VIX"
+  },
+  "execution": {
+    "broker": "alpaca",
+    "alpaca_base_url": "https://paper-api.alpaca.markets",
+    "order_type": "limit",
+    "limit_offset_pct": 0.1,
+    "max_spread_pct": 0.5,
+    "min_liquidity_shares": 50000
+  },
+  "learning": {
+    "use_historical_win_rate_in_probability": true,
+    "min_trades_for_historical_adjustment": 10,
+    "auto_update_weights": false,
+    "underperform_threshold_trades": 10,
+    "underperform_win_rate_threshold": 0.4
+  },
+  "frontend": {
+    "enabled": true,
+    "api_port": 8080,
+    "refresh_interval_seconds": 5,
+    "cors_origins": ["http://localhost:3000", "http://localhost:5173"]
+  },
+  "logging": {
+    "log_level": "INFO",
+    "log_rejections": true,
+    "log_all_scanned": false,
+    "trade_log_dir": "logs/trades",
+    "rejection_log_dir": "logs/rejections",
+    "performance_log_dir": "logs/performance"
+  },
+  "data": {
+    "provider": "polygon",
+    "polygon_base_url": "https://api.polygon.io",
+    "timeframe": "5",
+    "timeframe_unit": "minute",
+    "lookback_bars": 100,
+    "level2_enabled": true
+  }
+}
